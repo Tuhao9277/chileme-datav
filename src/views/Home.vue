@@ -1,51 +1,26 @@
 <template>
   <div class="home">
     <top-view />
-    <sales-view />
+    <!-- <sales-view />
     <bottom-view />
-    <map-view />
+    <map-view /> -->
   </div>
 </template>
 
-<script>
-import TopView from '../components/TopView';
-import SalesView from '../components/SalesView';
-import BottomView from '../components/BottomView';
-import MapView from '../components/MapView';
+<script lang="ts">
+import TopView from '../components/TopView.vue';
+import SalesView from '../components/SalesView.vue';
+import BottomView from '../components/BottomView.vue';
+import MapView from '../components/MapView.vue';
 import { wordcloud, screenData, mapScatter } from '../api';
+import { Component, Vue, Provide } from 'vue-property-decorator';
 
-export default {
-  name: 'Home',
+@Component<Home>({
   components: {
     TopView,
     SalesView,
     BottomView,
     MapView,
-  },
-  data() {
-    return {
-      reportData: null,
-      wordCloud: null,
-      mapData: null,
-    };
-  },
-  methods: {
-    getReportData() {
-      return this.reportData;
-    },
-    getWordCloud() {
-      return this.wordCloud;
-    },
-    getMapData() {
-      return this.mapData;
-    },
-  },
-  provide() {
-    return {
-      getReportData: this.getReportData,
-      getWordCloud: this.getWordCloud,
-      getMapData: this.getMapData,
-    };
   },
   mounted() {
     screenData().then(data => {
@@ -58,7 +33,26 @@ export default {
       this.mapData = data;
     });
   },
-};
+})
+export default class Home extends Vue {
+  private reportData = {};
+  private wordCloud = [];
+  private mapData = [];
+
+  @Provide()
+  getReportData() {
+    return this.reportData;
+  }
+
+  @Provide()
+  getWordCloud() {
+    return this.wordCloud;
+  }
+  @Provide()
+  getMapData() {
+    return this.mapData;
+  }
+}
 </script>
 
 <style>

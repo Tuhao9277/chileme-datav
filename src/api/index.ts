@@ -2,7 +2,7 @@ import request from '../utils/request';
 
 const icode = '13926EAFCAA16CC3';
 
-export function wordcloud() {
+export function wordcloud(): Promise<any> {
   return request({
     url: '/screen/wordcloud',
     method: 'get',
@@ -10,7 +10,7 @@ export function wordcloud() {
   });
 }
 
-export function mapScatter() {
+export function mapScatter(): Promise<any> {
   return request({
     url: '/screen/map/scatter',
     method: 'get',
@@ -18,7 +18,7 @@ export function mapScatter() {
   });
 }
 
-export function screenData() {
+export async function screenData(): Promise<any> {
   return request({
     url: '/screen/data',
     method: 'get',
