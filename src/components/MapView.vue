@@ -1,11 +1,79 @@
 <template>
-  <div>MapView</div>
+  <div class="map-view">
+    <div class="left">
+      <b-map-scatter />
+    </div>
+    <div class="right">
+      <el-card show="hover">
+        <template v-slot:header>
+          <div class="title">用户月同比增长</div>
+        </template>
+        <template>
+          <div class="chart-wrapper">
+            <liquid-fill />
+          </div>
+        </template>
+      </el-card>
+      <el-card shadow="hover">
+        <template v-slot:header>
+          <div class="title">热门搜索</div>
+        </template>
+        <template>
+          <div class="chart-wrapper">
+            <word-cloud />
+          </div>
+        </template>
+      </el-card>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
+import BMapScatter from './BMapScatter.vue';
+import LiquidFill from './LiquidFill.vue';
+import WordCloud from './WordCloud.vue';
 
-export default Vue.extend({});
+@Component({
+  components: {
+    BMapScatter,
+    LiquidFill,
+    WordCloud,
+  },
+})
+export default class MapView extends Vue {}
 </script>
 
-<style scoped></style>
+<style lang="less" scoped>
+.map-view {
+  display: flex;
+  margin-top: 20px;
+  .left {
+    flex: 0 0 80%;
+    width: 80%;
+    height: 600px;
+  }
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    .title {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 0 0 0 20px;
+    }
+    .chart-wrapper {
+      width: 100%;
+      height: 190px;
+    }
+  }
+}
+</style>

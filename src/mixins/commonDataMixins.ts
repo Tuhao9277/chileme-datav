@@ -1,4 +1,5 @@
 import { ComponentOptions } from 'vue';
+import _ from 'lodash';
 
 type OType = { [key: string]: string };
 function format(v: string) {
@@ -6,7 +7,7 @@ function format(v: string) {
   return `${v}`.replace(reg, '$&,');
 }
 function wrapperObject(o: any, k: string) {
-  if (o && k.indexOf('.') >= 0) {
+  if (!_.isEmpty(o) && k.indexOf('.') >= 0) {
     const keys = k.split('.');
     keys.forEach(key => {
       o = o[key];
