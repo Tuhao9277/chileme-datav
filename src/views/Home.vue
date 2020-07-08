@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <top-view />
-    <!-- <sales-view />
+    <sales-view />
     <bottom-view />
-    <map-view /> -->
+    <map-view />
   </div>
 </template>
 
