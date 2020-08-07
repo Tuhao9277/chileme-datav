@@ -1,12 +1,17 @@
 <template>
   <div class="container">
-    <div class="high_text">{{ _rate.lowRate | toPercent(2, 'ceil') }}</div>
+    <div class="high_text">{{ _rate.highRate | toPercent(2, 'ceil') }}</div>
     <div class="versus-main" :style="{ width: totalWidth + 'px' }">
-      <div class="versus high_part" :style="{ width: _rate.highWidth + 'px' }"></div>
+      <div :style="{ width: _rate.highWidth + 'px' }">
+        <div class="versus high_part" :style="{ width: _rate.highWidth + 'px' }"></div>
+      </div>
       <div class="versus low_part" :style="{ width: _rate.lowWidth + 'px' }"></div>
       <div class="text_part" :style="{ left: _rate.highWidth + 'px' }">VS</div>
     </div>
-    <div class="low_text">{{ _rate.highRate | toPercent(2, 'floor') }}</div>
+    <div class="low_text">{{ _rate.lowRate | toPercent(2, 'floor') }}</div>
+    <video muted loop autoplay>
+      <source :src="`${process.env.BASE_URL}Frost.mov`" type="video/mov" />
+    </video>
   </div>
 </template>
 

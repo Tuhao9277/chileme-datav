@@ -31,7 +31,7 @@ import { Component } from 'vue-property-decorator';
 import TotalSales from './TotalSales.vue';
 import TotalOrders from './TotalOrders.vue';
 import TodayUsers from './TodayUsers.vue';
-import TotalUsers from './TotalUsers.vue'
+import TotalUsers from './TotalUsers.vue';
 @Component<TopView>({
   components: {
     TotalSales,

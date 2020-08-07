@@ -6,7 +6,8 @@ import './plugins/vcharts';
 import ECharts from 'echarts';
 import VueECharts from 'vue-echarts';
 import './style/index.css';
-import 'element-ui/lib/theme-chalk/index.css';
+// import './style/theme.scss';
+
 import { floor, ceil } from 'lodash';
 Vue.config.productionTip = false;
 Vue.prototype.$echarts = ECharts;
